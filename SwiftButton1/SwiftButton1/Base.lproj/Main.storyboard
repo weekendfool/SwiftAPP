@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftButton1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtM-o0-jmG">
+                                <rect key="frame" x="120" y="389" width="135" height="128"/>
+                                <state key="normal" image="setting.png"/>
+                                <connections>
+                                    <action selector="tapNextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8cO-70-wgg"/>
+                                    <segue destination="rxg-mz-p2b" kind="presentation" id="8fT-ql-xYv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最初の画面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fa-pz-hhH">
+                                <rect key="frame" x="80" y="150" width="215" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Fa-pz-hhH" secondAttribute="trailing" constant="80" id="6hd-fq-sMI"/>
+                            <constraint firstItem="1Fa-pz-hhH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="93E-bb-KxS"/>
+                            <constraint firstItem="1Fa-pz-hhH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="Bvh-Ix-VQK"/>
+                            <constraint firstItem="UtM-o0-jmG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="aux-sp-Jfx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UtM-o0-jmG" secondAttribute="bottom" constant="150" id="fKm-CA-beA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UtM-o0-jmG" secondAttribute="trailing" constant="120" id="kzm-XE-O1d"/>
+                            <constraint firstItem="1Fa-pz-hhH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="pOO-QK-KyH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-127" y="123"/>
+        </scene>
+        <!--Next View Controller-->
+        <scene sceneID="iVj-NS-VtW">
+            <objects>
+                <viewController id="rxg-mz-p2b" customClass="NextViewController" customModule="SwiftButton1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dYL-Ho-OsY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNX-pj-SR5">
+                                <rect key="frame" x="120" y="369" width="135" height="128"/>
+                                <state key="normal" image="key.png"/>
+                                <connections>
+                                    <action selector="changeButton:" destination="rxg-mz-p2b" eventType="touchUpInside" id="A4X-LG-lBt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次の画面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQk-vc-wzI">
+                                <rect key="frame" x="0.0" y="150" width="375" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="a4L-ef-Cpe" firstAttribute="trailing" secondItem="IQk-vc-wzI" secondAttribute="trailing" id="8LI-d1-Kkr"/>
+                            <constraint firstItem="IQk-vc-wzI" firstAttribute="top" secondItem="a4L-ef-Cpe" secondAttribute="top" constant="150" id="Lxd-wN-gRO"/>
+                            <constraint firstItem="a4L-ef-Cpe" firstAttribute="bottom" secondItem="iNX-pj-SR5" secondAttribute="bottom" constant="150" id="QWh-rV-fub"/>
+                            <constraint firstItem="IQk-vc-wzI" firstAttribute="leading" secondItem="a4L-ef-Cpe" secondAttribute="leading" id="Y5q-7q-i0Z"/>
+                            <constraint firstItem="iNX-pj-SR5" firstAttribute="leading" secondItem="a4L-ef-Cpe" secondAttribute="leading" constant="120" id="bPT-IE-1LT"/>
+                            <constraint firstItem="a4L-ef-Cpe" firstAttribute="trailing" secondItem="iNX-pj-SR5" secondAttribute="trailing" constant="120" id="pJN-pP-12A"/>
+                            <constraint firstItem="IQk-vc-wzI" firstAttribute="centerX" secondItem="dYL-Ho-OsY" secondAttribute="centerX" id="zEZ-fl-Wff"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a4L-ef-Cpe"/>
+                    </view>
+                    <connections>
+                        <outlet property="changeLabel" destination="IQk-vc-wzI" id="gBh-LN-Ppq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7rb-59-tk1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="123"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="key.png" width="128" height="128"/>
+        <image name="setting.png" width="128" height="128"/>
+    </resources>
+</document>
