@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>472631047728-cb0l7afr2gim0a02l3lghk90hu8n9g1g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.472631047728-cb0l7afr2gim0a02l3lghk90hu8n9g1g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC1-RiEU8QSVPewCgnyXrpM4uSl0-mJl4k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>472631047728</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gmail.tukareta.nori.chatApp</string>
+	<key>PROJECT_ID</key>
+	<string>cahtapp-5297d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cahtapp-5297d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:472631047728:ios:dbc0cded4fa9e7df241ff5</string>
+	<key>DATABASE_URL</key>
+	<string>https://cahtapp-5297d.firebaseio.com</string>
+</dict>
+</plist>
