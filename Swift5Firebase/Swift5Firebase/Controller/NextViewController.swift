@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+import Firebase
+import Photos
 
 class NextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -30,6 +32,23 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        PHPhotoLibrary.requestAuthorization { (status) in
+            switch(status) {
+                
+                case .authorized:
+                    print("許可されています")
+                
+            case .denied:
+                print("拒否")
+                
+            case .notDetermined:
+                print("notDetermined")
+                
+            case .restricted:
+                print("restricted")
+            }
+        }
+        
         timeLineTableView.delegate = self
         timeLineTableView.dataSource = self
 
@@ -44,8 +63,37 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
                }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fechContentsData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contentsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        userName = contentsArray[indexPath.row].userNameString
+        
+        commentString = contentsArray[indexPath.row].commentString
+        
+        createData = contentsArray[indexPath.row].postDateString
+        
+        contentImageString = contentsArray[indexPath.row].contentImageString
+        
+        userProfileImageString = contentsArray[indexPath.row].profileImageString
+        
+        performSegue(withIdentifier: "detail", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailVC = segue.destination as! DetailViewController
+        
+        detailVC.userName = userName
+        detailVC.comment = commentString
+        detailVC.date = createData
+        detailVC.profileImage = userProfileImageString
+        detailVC.contentImage = contentImageString
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,5 +193,53 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.pushViewController(editPostVC, animated: true)
         
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func fechContentsData() {
+        let ref = Database.database().reference().child("timeLine").queryLimited(toLast: 100).queryOrdered(byChild: "postDate").observe(.value) { (snapShot) in
+            self.contentsArray.removeAll()
+            if let snapShot = snapShot.children.allObjects as? [DataSnapshot] {
+                
+                for snap in snapShot {
+                    
+                    if let postData = snap.value as? [String:Any] {
+                        let userName = postData["userName"] as? String
+                        let userProfileImage = postData["userProfileImage"] as? String
+                        let contents = postData["contents"] as? String
+                        let comment = postData["comment"] as? String
+                        
+                        var postDate:CLong?
+                        if let postedDate = postData["postDate"] as? CLong {
+                            postDate = postedDate
+                        }
+                        let timeString = self.convertTimeStamp(serverTimeStamp: postDate!)
+                        
+                        self.contentsArray.append(Contents(userNameString: userName!, profileImageString: userProfileImage!, contentImageString: contents!, commentString: comment!, postDateString: timeString))
+                    }
+                }
+                self.timeLineTableView.reloadData()
+                
+                let indexPath = IndexPath(row: self.contentsArray.count - 1, section: 0)
+                
+                if self.contentsArray.count >= 5 {
+                    self.timeLineTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+        }
+    }
+    
+    func convertTimeStamp(serverTimeStamp:CLong) -> String {
+        let x = serverTimeStamp / 1000
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(x))
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateStyle = .long
+        
+        formatter.timeStyle = .medium
+        
+        return formatter.string(from: date)
+        
     }
 }

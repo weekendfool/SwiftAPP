@@ -19,6 +19,7 @@
 		8CEC63FB2436C9CA00169E98 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC63FA2436C9CA00169E98 /* NextViewController.swift */; };
 		8CEC63FD2437281500169E98 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC63FC2437281500169E98 /* Contents.swift */; };
 		8CEC63FF243A563100169E98 /* EditAndPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC63FE243A563100169E98 /* EditAndPostViewController.swift */; };
+		8CEC6401243C707600169E98 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC6400243C707600169E98 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8CEC63FA2436C9CA00169E98 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 		8CEC63FC2437281500169E98 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		8CEC63FE243A563100169E98 /* EditAndPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndPostViewController.swift; sourceTree = "<group>"; };
+		8CEC6400243C707600169E98 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		96DE2F5EC25E5B5EDE82D843 /* Pods_Swift5Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift5Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3D09A88E00441CF5B8F9E0 /* Pods-Swift5Firebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift5Firebase.debug.xcconfig"; path = "Target Support Files/Pods-Swift5Firebase/Pods-Swift5Firebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 				8CEC63F82436B5D000169E98 /* InputViewController.swift */,
 				8CEC63FA2436C9CA00169E98 /* NextViewController.swift */,
 				8CEC63FE243A563100169E98 /* EditAndPostViewController.swift */,
+				8CEC6400243C707600169E98 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				8CEC639E2430B2AD00169E98 /* AppDelegate.swift in Sources */,
 				8CEC63A02430B2AD00169E98 /* SceneDelegate.swift in Sources */,
 				8CEC63F92436B5D000169E98 /* InputViewController.swift in Sources */,
+				8CEC6401243C707600169E98 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

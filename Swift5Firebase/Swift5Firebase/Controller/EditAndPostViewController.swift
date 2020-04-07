@@ -9,13 +9,15 @@
 import UIKit
 import Firebase
 
-class EditAndPostViewController: UIViewController {
+class EditAndPostViewController: UIViewController, UITextview {
     
     var passedImage = UIImage()
     var userName = String()
     var userImageString = String()
     var userImageData = Data()
     var userImgae = UIImage()
+    
+    let screenSize = UIScreen.main.bounds.size
     
     @IBOutlet weak var userProfileImageView: UIImageView!
     
@@ -25,9 +27,17 @@ class EditAndPostViewController: UIViewController {
     
     @IBOutlet weak var commentTextView: UITextView!
     
+    @IBOutlet weak var sendButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        commentTextView.delegate = self as! UITextViewDelegate
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(EditAndPostViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(EditAndPostViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         if UserDefaults.standard.object(forKey: "userName") != nil {
             userName = UserDefaults.standard.object(forKey: "userName") as! String
         }
@@ -45,6 +55,22 @@ class EditAndPostViewController: UIViewController {
         contentImageView.image = passedImage
     }
     
+    @objc func keyboardWillShow(_ notification:NSNotification) {
+        let kyeboardHeight = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as Any) as AnyObject).cgRectValue.height
+        
+        messageTextField.frame.origin.y = screenSize.height - keyboardHeight - messageTextField.frame.height
+        
+        sendButton.frame.origin.y = screenSize.height - keyboardHeight - sendButton.frame.height
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        messageTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -56,7 +82,7 @@ class EditAndPostViewController: UIViewController {
         
         let timeLineDB = Database.database().reference().child("timeLine").childByAutoId()
         
-        let storage = Storage.storage().reference(forURL: "")
+        let storage = Storage.storage().reference(forURL: "gs://fir-login-3deca.appspot.com/")
         
         let key = timeLineDB.child("Users").childByAutoId().key
         let key2 = timeLineDB.child("Contents").childByAutoId().key
@@ -98,13 +124,20 @@ class EditAndPostViewController: UIViewController {
                     if url != nil {
                         imageRef2.downloadURL { (url2, error) in
                             if url2 != nil {
+                                let timeLineInfo = ["userName":self.userName as Any, "userProfileImage":url?.absoluteString as Any, "contents":url2?.absoluteString as Any, "comment":self.commentTextView.text as Any, "postData":ServerValue.timestamp()] as [String:Any]
+                                timeLineDB.updateChildValues(timeLineInfo)
                                 
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }
                     }
                 }
             }
         }
+        
+        uploadTask.resume()
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
