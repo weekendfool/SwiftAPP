@@ -1,0 +1,6 @@
+framework module Pods_Swift5Firebase {
+  umbrella header "Pods-Swift5Firebase-umbrella.h"
+
+  export *
+  module * { export * }
+}
