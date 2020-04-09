@@ -1,0 +1,6 @@
+framework module Pods_YutuberApp {
+  umbrella header "Pods-YutuberApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
