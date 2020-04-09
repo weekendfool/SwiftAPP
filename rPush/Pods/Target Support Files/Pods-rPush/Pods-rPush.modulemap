@@ -1,0 +1,6 @@
+framework module Pods_rPush {
+  umbrella header "Pods-rPush-umbrella.h"
+
+  export *
+  module * { export * }
+}
